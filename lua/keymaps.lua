@@ -16,39 +16,53 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
--- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
--- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
--- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
--- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+-- [[ Custom Keymaps ]]
 
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+-- Unbind 's' key to avoid conflict with surround
+vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
+vim.keymap.set({ 'n', 'x' }, 'S', '<Nop>')
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.hl.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
+-- File navigation, open ex mode
+vim.keymap.set('n', '<leader>e', vim.cmd.Ex, { desc = 'Open vim Ex file explorer' })
+vim.keymap.set('n', '<leader><Tab>', '<cmd>b#<CR>', { desc = 'Switch to previous buffer' })
 
--- vim: ts=2 sts=2 sw=2 et
+-- Keep selection after indentation
+vim.keymap.set('x', '>', '>gv')
+vim.keymap.set('x', '<', '<gv')
+
+-- Keep same content in register after pasting
+vim.keymap.set('x', '<leader>p', '"_dP')
+
+-- Copy line and comment original
+vim.keymap.set('n', 'yd', 'yygccp', { remap = true, desc = 'Duplicate line and comment' })
+
+-- Improve scrolling navigation
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Vertical scrolling by a few lines, find better mappings?
+vim.keymap.set('n', '<C-j>', '5jzzzv', { desc = 'Move down by 5 lines' })
+vim.keymap.set('n', '<C-k>', '5kzzzv', { desc = 'Move up by 5 lines' })
+
+-- Horizontal movement
+-- Replace if better options come up
+vim.keymap.set('n', '<C-h>', '^', { desc = 'Move to first non-whitespace characted in line' })
+vim.keymap.set('n', '<C-h>', '$', { desc = 'Move to first non-whitespace characted in line' })
+
+-- Swap lines
+vim.keymap.set('n', '<leader>mj', ':m .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('n', '<leader>mk', ':m .-2<CR>==', { desc = 'Move line up' })
+
+vim.keymap.set('x', '<leader>mj', ':m >+1<CR>gv=gv', { desc = 'Move line down in visual mode' })
+vim.keymap.set('x', '<leader>mk', ':m <-2<CR>gv=gv', { desc = 'Move line up in visual mode' })
