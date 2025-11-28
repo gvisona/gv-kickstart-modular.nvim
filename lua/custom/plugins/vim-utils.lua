@@ -1,6 +1,19 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    { -- Useful plugin to show you pending keybinds.
+  -- { -- Add closing pairs, e.g. for brackets
+  --   'windwp/nvim-autopairs',
+  --   event = 'InsertEnter',
+  --   -- Optional dependency
+  --   dependencies = { 'hrsh7th/nvim-cmp' },
+  --   config = function()
+  --     require('nvim-autopairs').setup {}
+  --     -- If you want to automatically add `(` after selecting a function or method
+  --     local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  --     local cmp = require 'cmp'
+  --     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+  --   end,
+  -- },
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -46,23 +59,24 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ebug' },
         { '<leader>dp', group = '[D]ebug [P]ython', mode = { 'n', 'x' } },
-        { '<leader>g', group = '[G]it' },
+        -- { '<leader>g', group = '[G]it' },
         { '<leader>r', group = '[R]ename' },
+        { '<leader>l', group = '[L]SP' },
         { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>m', group = '[M]arkdown' },
         { '<leader>n', group = '[N]otes' },
         { '<leader>o', group = '[O]bsidian' },
         { '<leader>e', group = 'File [E]xplorer' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
-    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-
+  { -- highlight and search for todo comments like TODO, HACK, BUG in your code base
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 }
