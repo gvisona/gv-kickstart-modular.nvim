@@ -48,4 +48,22 @@ return {
     main = 'ibl',
     opts = {},
   },
+  {
+    'Wansmer/treesj',
+    -- keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require('treesj').setup {
+        use_default_keymaps = false,
+      }
+
+      local tj = require 'treesj'
+      -- For default preset
+      vim.keymap.set('n', '<leader>t', tj.toggle)
+      -- For extending default preset with `recursive = true`
+      vim.keymap.set('n', '<leader>T', function()
+        tj.toggle { split = { recursive = true } }
+      end)
+    end,
+  },
 }

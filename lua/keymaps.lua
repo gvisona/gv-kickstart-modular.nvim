@@ -48,6 +48,8 @@ vim.keymap.set('n', 'yd', 'yygccp', { remap = true, desc = 'Duplicate line and c
 -- Improve scrolling navigation
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '}', '}zz')
+vim.keymap.set('n', '{', '{zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
@@ -58,7 +60,7 @@ vim.keymap.set('n', '<C-k>', '5kzzzv', { desc = 'Move up by 5 lines' })
 -- Horizontal movement
 -- Replace if better options come up
 vim.keymap.set('n', '<C-h>', '^', { desc = 'Move to first non-whitespace characted in line' })
-vim.keymap.set('n', '<C-h>', '$', { desc = 'Move to first non-whitespace characted in line' })
+vim.keymap.set('n', '<C-l>', '$', { desc = 'Move to first non-whitespace characted in line' })
 
 -- Swap lines
 vim.keymap.set('n', '<leader>mj', ':m .+1<CR>==', { desc = 'Move line down' })
