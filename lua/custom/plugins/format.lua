@@ -59,11 +59,11 @@ return {
 
       local tj = require 'treesj'
       -- For default preset
-      vim.keymap.set('n', '<leader>t', tj.toggle)
+      vim.keymap.set('n', '<leader>t', tj.toggle, { desc = 'Treesj [t]oggle' })
       -- For extending default preset with `recursive = true`
       vim.keymap.set('n', '<leader>T', function()
         tj.toggle { split = { recursive = true } }
-      end)
+      end, { desc = 'Treesj [T]oggle Rrecursive' })
     end,
   },
 }

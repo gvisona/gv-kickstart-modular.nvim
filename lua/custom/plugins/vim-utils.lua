@@ -59,19 +59,16 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>d', group = '[D]ebug' },
-        { '<leader>dp', group = '[D]ebug [P]ython', mode = { 'n', 'x' } },
+        -- { '<leader>d', group = '[D]ebug' },
+        -- { '<leader>dp', group = '[D]ebug [P]ython', mode = { 'n', 'x' } },
         -- { '<leader>g', group = '[G]it' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>l', group = '[L]SP' },
         { '<leader>s', group = '[S]earch' },
-        -- { '<leader>h', group = 'Toggle Inlay' },
         { '<leader>m', group = '[M]arkdown' },
-        { '<leader>n', group = '[N]otes' },
+        -- { '<leader>n', group = '[N]otes' },
         { '<leader>o', group = '[O]bsidian' },
         { '<leader>e', group = 'File [E]xplorer' },
-        { '<leader>t', group = 'Treesj [t]oggle' },
-        { '<leader>T', group = 'Treesj [T]oggle Rrecursive' },
       },
     },
   },
