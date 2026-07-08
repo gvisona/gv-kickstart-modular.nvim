@@ -61,7 +61,7 @@ return {
       spec = {
         -- { '<leader>d', group = '[D]ebug' },
         -- { '<leader>dp', group = '[D]ebug [P]ython', mode = { 'n', 'x' } },
-        -- { '<leader>g', group = '[G]it' },
+        { '<leader>g', group = '[G]it' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>l', group = '[L]SP' },
         { '<leader>s', group = '[S]earch' },
