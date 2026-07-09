@@ -13,7 +13,7 @@ require 'options'
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
--- [[ Setting options ]]
+-- [[ Autocommands ]]
 require 'autocmd'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
